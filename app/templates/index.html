@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Bienvenue dans l'application de prédiction de prêt bancaire</h1>
+    <p>Remplissez le formulaire pour savoir si votre demande de prêt est acceptée ou non.</p>
+    <a href="{{ url_for('predict') }}">Commencer</a>
+{% endblock %}

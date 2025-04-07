@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Résultat de la demande de prêt</h1>
+    {% if prediction == 1 %}
+        <p>Votre demande de prêt a été <strong>acceptée</strong>.</p>
+    {% else %}
+        <p>Votre demande de prêt a été <strong>refusée</strong>.</p>
+        <a href="{{ url_for('explain') }}">Pourquoi ce résultat ?</a>
+    {% endif %}
+    <a href="{{ url_for('predict') }}">again</a>
+{% endblock %}

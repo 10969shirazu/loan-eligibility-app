@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{%block content%}
+        {% for i in why%}
+            {% if i["score"]<-1 %}
+                <p>votre {{i["variable"]}} ne correspend pas a ce qu'on recherche, conseil : </p>
+                {% if i["mean"]< i["val"]%}
+                    <p>il faut diminuer {{i["variable"]}} qui est de {{i["val"]}}, d'environ {{i["val"]- i["mean"]}}</p>
+                {%else%}
+                    <p>il faut augmenter {{i["variable"]}} d'environ {{i["mean"]- i["val"]}}</p>
+                {%endif%}
+                <hr>
+            {%endif%}
+        {%endfor%}
+        <a href = "{{url_for("predict")}}">retour</a>
+
+{%endblock%}

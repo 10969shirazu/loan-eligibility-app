@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Formulaire de demande de prêt</h1>
+
+<form action="{{ url_for('predict') }}" method="POST">
+    <p>
+        <label for="loan_amnt">Montant du prêt :</label>
+        <input type="number" name="loan_amnt" id="loan_amnt" required>
+    </p>
+    <p>
+        <label for="term">Durée (mois) :</label>
+        <select name="term" id="term">
+            <option value="36">36 mois</option>
+            <option value="60">60 mois</option>
+        </select>
+    </p>
+    <p>
+        <label for="int_rate">Taux d'intérêt (%) :</label>
+        <input type="number" step="0.01" name="int_rate" id="int_rate" required>
+    </p>
+
+    <p>
+        <label for="annual_inc">Revenu annuel :</label>
+        <input type="number" name="annual_inc" id="annual_inc" required>
+    </p>
+
+    <p>
+        <label for="dti">Ratio d'endettement (DTI) :</label>
+        <input type="number" step="0.01" name="dti" id="dti" required>
+    </p>
+    <p>
+        <label for="delinq_2yrs">Délais de paiement (2 ans) :</label>
+        <input type="number" name="delinq_2yrs" id="delinq_2yrs" required>
+    </p>
+    <p>
+        <label for="inq_last_6mths">Requêtes de crédit (6 mois) :</label>
+        <input type="number" name="inq_last_6mths" id="inq_last_6mths" required>
+    </p>
+    <p>
+        <label for="open_acc">Nombre de comptes ouverts :</label>
+        <input type="number" name="open_acc" id="open_acc" required>
+    </p>
+    <p>
+        <label for="pub_rec">Incidents de crédit public :</label>
+        <input type="number" name="pub_rec" id="pub_rec" required>
+    </p>
+    <p>
+        <label for="revol_bal">Solde des crédits renouvelables :</label>
+        <input type="number" name="revol_bal" id="revol_bal" required>
+    </p>
+    <p>
+        <label for="revol_util">Utilisation des crédits renouvelables (%) :</label>
+        <input type="number" step="0.01" name="revol_util" id="revol_util" required>
+    </p>
+    <p>
+        <label for="total_acc">Nombre total de comptes :</label>
+        <input type="number" name="total_acc" id="total_acc" required>
+    </p>
+    <p>
+        <label for="last_pymnt_amnt">Montant du dernier paiement :</label>
+        <input type="number" name="last_pymnt_amnt" id="last_pymnt_amnt" required>
+    </p>
+    <p>
+    <label>Statut de propriété :</label>
+    <input type="checkbox" name="home_ownership" value="OWN" id="home_own">
+    <label for="home_own">Propriétaire</label>
+    <input type="checkbox" name="home_ownership" value="RENT" id="home_rent">
+    <label for="home_rent">Locataire</label>
+</p>
+
+<p>
+    <label>Statut de vérification :</label>
+    <input type="checkbox" name="verification_status" value="Source Verified" id="verif_source">
+    <label for="verif_source">Source Vérifiée</label>
+    <input type="checkbox" name="verification_status" value="Verified" id="verif_verified">
+    <label for="verif_verified">Vérifié</label>
+</p>
+
+<p>
+    <label>Objet du prêt :</label>
+    <input type="checkbox" name="purpose" value="credit_card" id="purpose_credit_card">
+    <label for="purpose_credit_card">Carte de crédit</label>
+    <input type="checkbox" name="purpose" value="debt_consolidation" id="purpose_debt_consolidation">
+    <label for="purpose_debt_consolidation">Consolidation de dettes</label>
+    <input type="checkbox" name="purpose" value="home_improvement" id="purpose_home_improvement">
+    <label for="purpose_home_improvement">Rénovation</label>
+    <input type="checkbox" name="purpose" value="major_purchase" id="purpose_major_purchase">
+    <label for="purpose_major_purchase">Achat important</label>
+    <input type="checkbox" name="purpose" value="medical" id="purpose_medical">
+    <label for="purpose_medical">Médical</label>
+    <input type="checkbox" name="purpose" value="other" id="purpose_other">
+    <label for="purpose_other">Autre</label>
+    <input type="checkbox" name="purpose" value="small_business" id="purpose_small_business">
+    <label for="purpose_small_business">Petite entreprise</label>
+</p>
+
+<p>
+    <input type="submit" value="Envoyer la demande">
+</p>
+</form>
+
+{% endblock %}
