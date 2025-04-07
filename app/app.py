@@ -30,7 +30,7 @@ required_columns = [
         ]
 
 app = Flask(__name__)
-app.secret_key = "0a5182143ef857c588fad8223df8b2c9e9d03fff1555b13a11025e6fba88c864"
+app.secret_key = os.urandom(24)
 
 @app.route('/', methods=["GET"])
 def acceuil():
@@ -116,10 +116,10 @@ def explain():
         })
     print("\n\n\n", resu)
 
-    
-    plt.figure(figsize=(10,5))
-    shap.summary_plot(shap_values,data, feature_names = required_columns)
-    plt.show()
+    #pour visualiser l'impacte de chaque variable
+    #plt.figure(figsize=(10,5))
+    #shap.summary_plot(shap_values,data, feature_names = required_columns)
+    #plt.show()
     
     return render_template("explain.html", why=resu[:5])
 
