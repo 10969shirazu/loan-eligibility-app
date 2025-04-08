@@ -44,16 +44,59 @@
 
 <!-- Eligibility Form -->
 <section id="eligibility" class="py-16 px-6 md:px-20 bg-white">
-  <div class="max-w-xl mx-auto text-center">
-    <h2 class="text-3xl font-bold mb-6">Check Your Loan Eligibility</h2>
-    <form method="POST" action="/predict" class="space-y-4 text-left">
-      <input type="text" name="name" placeholder="Your name" required class="w-full border p-3 rounded" />
-      <input type="number" name="income" placeholder="Monthly income (€)" required class="w-full border p-3 rounded" />
-      <input type="number" name="age" placeholder="Age" required class="w-full border p-3 rounded" />
-      <input type="text" name="job_type" placeholder="Job type" required class="w-full border p-3 rounded" />
-      <button type="submit" class="w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition">Submit</button>
-    </form>
-  </div>
-</section>
-
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Check Your Loan Eligibility</h2>
+  
+      <!-- Barre de progression -->
+      <p id="progress" class="mb-6 text-sm text-gray-600">Étape 1 sur 4</p>
+  
+      <form method="POST" action="/predict" id="stepForm" class="space-y-6 text-left">
+  
+        <!-- Étape 1 -->
+        <div id="step-1" class="step">
+          <label class="block font-semibold mb-2">👤 What's your full name?</label>
+          <p class="text-sm text-gray-600 mb-2">Please enter your full legal name as it appears on official documents.</p>
+          <input type="text" name="name" required class="w-full border p-3 rounded" />
+          <div class="flex justify-end mt-4">
+            <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+          </div>
+        </div>
+  
+        <!-- Étape 2 -->
+        <div id="step-2" class="step hidden">
+          <label class="block font-semibold mb-2">💶 What is your monthly income?</label>
+          <p class="text-sm text-gray-600 mb-2">We use this to assess your financial stability for the loan.</p>
+          <input type="number" name="income" required class="w-full border p-3 rounded" />
+          <div class="flex justify-between mt-4">
+            <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+            <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+          </div>
+        </div>
+  
+        <!-- Étape 3 -->
+        <div id="step-3" class="step hidden">
+          <label class="block font-semibold mb-2">🎂 How old are you?</label>
+          <p class="text-sm text-gray-600 mb-2">Applicants must be at least 18 years old.</p>
+          <input type="number" name="age" required class="w-full border p-3 rounded" />
+          <div class="flex justify-between mt-4">
+            <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+            <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+          </div>
+        </div>
+  
+        <!-- Étape 4 -->
+        <div id="step-4" class="step hidden">
+          <label class="block font-semibold mb-2">💼 What is your job type?</label>
+          <p class="text-sm text-gray-600 mb-2">Tell us whether you're employed, self-employed, student, etc.</p>
+          <input type="text" name="job_type" required class="w-full border p-3 rounded" />
+          <div class="flex justify-between mt-4">
+            <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+            <button type="submit" class="bg-green-700 text-white px-4 py-2 rounded">Submit</button>
+          </div>
+        </div>
+  
+      </form>
+    </div>
+  </section>
+    
 {% endblock %}
