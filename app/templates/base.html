@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}QuickFunds{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50">
+    <div class="text-2xl font-bold text-green-600">Quick<span class="text-black">Funds</span></div>
+    <ul class="flex space-x-6">
+      <li><a href="/" class="hover:text-green-600">Home</a></li>
+      <li><a href="#services" class="hover:text-green-600">Services</a></li>
+      <li><a href="#process" class="hover:text-green-600">How we work?</a></li>
+      <li><a href="#about" class="hover:text-green-600">About Us</a></li>
+    </ul>
+    <a href="#contact" class="bg-green-900 text-white px-4 py-2 rounded-full">Contact us</a>
+  </nav>
+
+  <!-- Contenu spécifique -->
+  {% block content %}
+  {% endblock %}
+
+  <!-- Footer -->
+  <footer class="bg-green-900 text-white py-8 px-6 md:px-20">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="text-2xl font-bold mb-4 md:mb-0">Quick<span class="text-white">Funds</span></div>
+      <div class="flex space-x-6 text-sm">
+        <a href="/" class="hover:underline">Home</a>
+        <a href="#services" class="hover:underline">Services</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </div>
+    </div>
+    <div class="text-center text-sm text-gray-300 mt-6">
+      © 2025 QuickFunds. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
