@@ -4,11 +4,22 @@
         {% for i in why%}
             {% if i["score"]<-1 %}
                 <p>votre {{i["variable"]}} ne correspend pas a ce qu'on recherche, conseil : </p>
-                {% if i["mean"]< i["val"]%}
-                    <p>il faut diminuer {{i["variable"]}} qui est de {{i["val"]}}, d'environ {{i["val"]- i["mean"]}}</p>
-                {%else%}
-                    <p>il faut augmenter {{i["variable"]}} d'environ {{i["mean"]- i["val"]}}</p>
-                {%endif%}
+                    {%if i["variable"] in categ %}
+                        {%if i["mean"] > 0.5%}
+                            {%if i["val"]!=1 %}
+                                <p>il faut il faut avoir cette situation : {{i["val"]}}</p>
+                            {%endif%}
+                        {%endif%}
+                            {%if i["val"]!= 0 %}
+                                <p>il ne faut pas etre dnas cette situation : {{i["val"]}}</p>
+                            {%endif%}
+                    {%else%}
+                        {% if i["mean"]< i["val"]%}
+                            <p>il faut diminuer {{i["variable"]}} qui est de {{i["val"]}}, d'environ {{i["val"]- i["mean"]}}</p>
+                        {%else%}
+                            <p>il faut augmenter {{i["variable"]}} qui est de {{i["val"]}} d'environ {{i["mean"]- i["val"]}}</p>
+                        {%endif%}
+                    {%endif%}
                 <hr>
             {%endif%}
         {%endfor%}

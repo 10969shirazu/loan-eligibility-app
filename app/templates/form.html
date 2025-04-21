@@ -20,12 +20,26 @@
         <label for="int_rate">Taux d'intérêt (%) :</label>
         <input type="number" step="0.01" name="int_rate" id="int_rate" required>
     </p>
-
+    <p>
+        <label for="installment">Mensualité :</label>
+        <input type="number" step="0.01" name="installment" id="installment" required>
+    </p>
+    <p>
+        <label for="grade">Note de crédit (A=1, B=2, ..., G=7) :</label>
+        <input type="number" name="grade" id="grade" min="1" max="7" required>
+    </p>
+    <p>
+        <label for="sub_grade">Sous-note (ex: A1=1, A2=2, ..., G5=35) :</label>
+        <input type="number" name="sub_grade" id="sub_grade" min="1" max="35" required>
+    </p>
+    <p>
+        <label for="emp_length">Ancienneté (en années) :</label>
+        <input type="number" step="1" name="emp_length" id="emp_length" required>
+    </p>
     <p>
         <label for="annual_inc">Revenu annuel :</label>
         <input type="number" name="annual_inc" id="annual_inc" required>
     </p>
-
     <p>
         <label for="dti">Ratio d'endettement (DTI) :</label>
         <input type="number" step="0.01" name="dti" id="dti" required>
@@ -63,42 +77,37 @@
         <input type="number" name="last_pymnt_amnt" id="last_pymnt_amnt" required>
     </p>
     <p>
-    <label>Statut de propriété :</label>
-    <input type="checkbox" name="home_ownership" value="OWN" id="home_own">
-    <label for="home_own">Propriétaire</label>
-    <input type="checkbox" name="home_ownership" value="RENT" id="home_rent">
-    <label for="home_rent">Locataire</label>
-</p>
-
-<p>
-    <label>Statut de vérification :</label>
-    <input type="checkbox" name="verification_status" value="Source Verified" id="verif_source">
-    <label for="verif_source">Source Vérifiée</label>
-    <input type="checkbox" name="verification_status" value="Verified" id="verif_verified">
-    <label for="verif_verified">Vérifié</label>
-</p>
-
-<p>
-    <label>Objet du prêt :</label>
-    <input type="checkbox" name="purpose" value="credit_card" id="purpose_credit_card">
-    <label for="purpose_credit_card">Carte de crédit</label>
-    <input type="checkbox" name="purpose" value="debt_consolidation" id="purpose_debt_consolidation">
-    <label for="purpose_debt_consolidation">Consolidation de dettes</label>
-    <input type="checkbox" name="purpose" value="home_improvement" id="purpose_home_improvement">
-    <label for="purpose_home_improvement">Rénovation</label>
-    <input type="checkbox" name="purpose" value="major_purchase" id="purpose_major_purchase">
-    <label for="purpose_major_purchase">Achat important</label>
-    <input type="checkbox" name="purpose" value="medical" id="purpose_medical">
-    <label for="purpose_medical">Médical</label>
-    <input type="checkbox" name="purpose" value="other" id="purpose_other">
-    <label for="purpose_other">Autre</label>
-    <input type="checkbox" name="purpose" value="small_business" id="purpose_small_business">
-    <label for="purpose_small_business">Petite entreprise</label>
-</p>
-
-<p>
-    <input type="submit" value="Envoyer la demande">
-</p>
+        <label>Statut de propriété :</label>
+        {% for val in ["OWN", "RENT", "MORTGAGE", "NONE", "OTHER"] %}
+        <input type="checkbox" name="home_ownership" value="{{ val }}" id="home_{{ val }}">
+        <label for="home_{{ val }}">{{ val }}</label>
+        {% endfor %}
+    </p>
+    <p>
+        <label>Statut de vérification :</label>
+        <input type="checkbox" name="verification_status" value="Source Verified" id="verif_source">
+        <label for="verif_source">Source Vérifiée</label>
+        <input type="checkbox" name="verification_status" value="Verified" id="verif_verified">
+        <label for="verif_verified">Vérifié</label>
+    </p>
+    <p>
+        <label>Objet du prêt :</label>
+        {% for val, label in [
+            ("credit_card", "Carte de crédit"), ("debt_consolidation", "Consolidation de dettes"),
+            ("educational", "Éducation"), ("home_improvement", "Rénovation"),
+            ("house", "Maison"), ("major_purchase", "Achat important"),
+            ("medical", "Médical"), ("moving", "Déménagement"),
+            ("other", "Autre"), ("renewable_energy", "Énergie renouvelable"),
+            ("small_business", "Petite entreprise"), ("vacation", "Vacances"),
+            ("wedding", "Mariage")
+        ] %}
+        <input type="checkbox" name="purpose" value="{{ val }}" id="purpose_{{ val }}">
+        <label for="purpose_{{ val }}">{{ label }}</label>
+        {% endfor %}
+    </p>
+    <p>
+        <input type="submit" value="Envoyer la demande">
+    </p>
 </form>
 
 {% endblock %}
