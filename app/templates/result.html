@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Result – QuickFunds{% endblock %}
+{% block title %}Eligibility Result – QuickFunds{% endblock %}
 
 {% block content %}
-<section class="py-20 px-6 md:px-20 text-center bg-white">
-  <div class="max-w-xl mx-auto bg-gray-50 p-10 rounded-lg shadow-lg">
-    <h2 class="text-3xl font-bold mb-6">Loan Eligibility Result</h2>
-
+<section class="min-h-screen flex items-center justify-center bg-white px-6 py-16">
+  <div class="max-w-xl text-center">
     {% if eligible %}
-      <p class="text-green-600 text-xl font-semibold mb-4">🎉 Congratulations, {{ name }}!</p>
-      <p class="text-green-700 text-lg">You are eligible for a loan with QuickFunds.</p>
+      <h2 class="text-3xl font-bold text-green-700 mb-4">✅ Congratulations!</h2>
+      <p class="text-lg text-gray-700 mb-6">
+        You are eligible for a loan. One of our agents will reach out to you shortly to proceed with the process.
+      </p>
     {% else %}
-      <p class="text-red-600 text-xl font-semibold mb-4">😞 Sorry, {{ name }}.</p>
-      <p class="text-red-700 text-lg">Unfortunately, you are not eligible for a loan at this time.</p>
+      <h2 class="text-3xl font-bold text-red-700 mb-4">❌ Sorry!</h2>
+      <p class="text-lg text-gray-700 mb-6">
+        Based on your information, you are not eligible for a loan at this time.
+        You can try again later or contact us for more details.
+      </p>
     {% endif %}
 
-    <a href="/" class="mt-6 inline-block bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">
+    <a href="/" class="inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition">
       Return to Home
     </a>
   </div>

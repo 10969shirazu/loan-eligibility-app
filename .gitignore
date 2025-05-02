@@ -1,0 +1,11 @@
+#Python
+__pycache__/
+*.pyc 
+
+#environnement virtuel
+venv/
+
+#Modèles ML
+
+#Fichier de données
+*.csv

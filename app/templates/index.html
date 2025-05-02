@@ -117,7 +117,7 @@
       </div>
   
       <!-- Bloc droit : formulaire -->
-      <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md mx-auto">
+      <div id="contact" class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md mx-auto">
         <form method="POST" action="/contact">
           <div class="space-y-4">
             <input type="text" name="name" placeholder="Your Name" required class="w-full border border-gray-300 p-3 rounded-full" />
@@ -133,59 +133,168 @@
   
 <!-- Eligibility Form -->
 <section id="eligibility" class="py-16 px-6 md:px-20 bg-white">
-    <div class="max-w-xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Check Your Loan Eligibility</h2>
-  
-      <!-- Barre de progression -->
-      <p id="progress" class="mb-6 text-sm text-gray-600">Étape 1 sur 4</p>
-  
-      <form method="POST" action="/predict" id="stepForm" class="space-y-6 text-left">
-  
-        <!-- Étape 1 -->
-        <div id="step-1" class="step">
-          <label class="block font-semibold mb-2">👤 What's your full name?</label>
-          <p class="text-sm text-gray-600 mb-2">Please enter your full legal name as it appears on official documents.</p>
-          <input type="text" name="name" required class="w-full border p-3 rounded" />
-          <div class="flex justify-end mt-4">
-            <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
-          </div>
+  <div class="max-w-xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">Check Your Loan Eligibility</h2>
+    <p id="progress" class="mb-6 text-sm text-gray-600">Étape 1 sur 8</p>
+
+    <form method="POST" action="/predict" id="stepForm" class="space-y-6 text-left">
+
+      <!-- Étape 1 -->
+      <div id="step-1" class="step">
+        <label class="block font-semibold mb-2">👤 Your full name</label>
+        <input type="text" name="name" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">💰 Loan amount requested</label>
+        <input type="number" name="loan_amnt" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">📆 Loan term</label>
+        <select name="term" class="w-full border p-3 rounded" required>
+          <option value=" 36 months">36 months</option>
+          <option value=" 60 months">60 months</option>
+        </select>
+
+        <div class="flex justify-end mt-6">
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
         </div>
-  
-        <!-- Étape 2 -->
-        <div id="step-2" class="step hidden">
-          <label class="block font-semibold mb-2">💶 What is your monthly income?</label>
-          <p class="text-sm text-gray-600 mb-2">We use this to assess your financial stability for the loan.</p>
-          <input type="number" name="income" required class="w-full border p-3 rounded" />
-          <div class="flex justify-between mt-4">
-            <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
-            <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
-          </div>
+      </div>
+
+      <!-- Étape 2 -->
+      <div id="step-2" class="step hidden">
+        <label class="block font-semibold mb-2">🧾 Annual income</label>
+        <input type="number" name="annual_inc" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">📈 Interest rate (%)</label>
+        <input type="number" name="int_rate" step="0.01" required class="w-full border p-3 rounded" />
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
         </div>
-  
-        <!-- Étape 3 -->
-        <div id="step-3" class="step hidden">
-          <label class="block font-semibold mb-2">🎂 How old are you?</label>
-          <p class="text-sm text-gray-600 mb-2">Applicants must be at least 18 years old.</p>
-          <input type="number" name="age" required class="w-full border p-3 rounded" />
-          <div class="flex justify-between mt-4">
-            <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
-            <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
-          </div>
+      </div>
+
+      <!-- Étape 3 -->
+      <div id="step-3" class="step hidden">
+        <label class="block font-semibold mb-2">🧑 Employment length</label>
+        <select name="emp_length" class="w-full border p-3 rounded" required>
+          <option value="10+ years">10+ years</option>
+          <option value="9 years">9 years</option>
+          <option value="8 years">8 years</option>
+          <option value="7 years">7 years</option>
+          <option value="6 years">6 years</option>
+          <option value="5 years">5 years</option>
+          <option value="4 years">4 years</option>
+          <option value="3 years">3 years</option>
+          <option value="2 years">2 years</option>
+          <option value="1 year">1 year</option>
+          <option value="< 1 year">&lt; 1 year</option>
+        </select>
+
+        <label class="block font-semibold mt-4 mb-2">🏠 Home ownership</label>
+        <select name="home_ownership" class="w-full border p-3 rounded" required>
+          <option value="RENT">RENT</option>
+          <option value="MORTGAGE">MORTGAGE</option>
+          <option value="OWN">OWN</option>
+          <option value="OTHER">OTHER</option>
+        </select>
+
+        <label class="block font-semibold mt-4 mb-2">🔍 Income verification status</label>
+        <select name="verification_status" class="w-full border p-3 rounded" required>
+          <option value="Not Verified">Not Verified</option>
+          <option value="Source Verified">Source Verified</option>
+          <option value="Verified">Verified</option>
+        </select>
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
         </div>
-  
-        <!-- Étape 4 -->
-        <div id="step-4" class="step hidden">
-          <label class="block font-semibold mb-2">💼 What is your job type?</label>
-          <p class="text-sm text-gray-600 mb-2">Tell us whether you're employed, self-employed, student, etc.</p>
-          <input type="text" name="job_type" required class="w-full border p-3 rounded" />
-          <div class="flex justify-between mt-4">
-            <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
-            <button type="submit" class="bg-green-700 text-white px-4 py-2 rounded">Submit</button>
-          </div>
+      </div>
+
+      <!-- Étape 4 -->
+      <div id="step-4" class="step hidden">
+        <label class="block font-semibold mb-2">🎯 Loan purpose</label>
+        <select name="purpose" class="w-full border p-3 rounded" required>
+          <option value="credit_card">Credit Card</option>
+          <option value="debt_consolidation">Debt Consolidation</option>
+          <option value="small_business">Small Business</option>
+          <option value="home_improvement">Home Improvement</option>
+          <option value="major_purchase">Major Purchase</option>
+          <option value="medical">Medical</option>
+          <option value="vacation">Vacation</option>
+          <option value="moving">Moving</option>
+          <option value="wedding">Wedding</option>
+          <option value="house">House</option>
+          <option value="renewable_energy">Renewable Energy</option>
+          <option value="other">Other</option>
+        </select>
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
         </div>
-  
-      </form>
-    </div>
-  </section>
-    
+      </div>
+
+      <!-- Étape 5 -->
+      <div id="step-5" class="step hidden">
+        <label class="block font-semibold mb-2">📊 Debt-to-Income Ratio (DTI)</label>
+        <input type="number" name="dti" step="0.01" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">⚖️ Delinquencies in last 2 years</label>
+        <input type="number" name="delinq_2yrs" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">🧾 Inquiries in last 6 months</label>
+        <input type="number" name="inq_last_6mths" required class="w-full border p-3 rounded" />
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Étape 6 -->
+      <div id="step-6" class="step hidden">
+        <label class="block font-semibold mb-2">🏦 Open accounts</label>
+        <input type="number" name="open_acc" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">📜 Public records</label>
+        <input type="number" name="pub_rec" required class="w-full border p-3 rounded" />
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Étape 7 -->
+      <div id="step-7" class="step hidden">
+        <label class="block font-semibold mb-2">💳 Revolving balance</label>
+        <input type="number" name="revol_bal" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">📈 Revolving utilization (%)</label>
+        <input type="number" name="revol_util" step="0.01" required class="w-full border p-3 rounded" />
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="button" onclick="nextStep()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Étape 8 -->
+      <div id="step-8" class="step hidden">
+        <label class="block font-semibold mb-2">🔢 Total accounts</label>
+        <input type="number" name="total_acc" required class="w-full border p-3 rounded" />
+
+        <label class="block font-semibold mt-4 mb-2">💵 Last payment amount</label>
+        <input type="number" name="last_pymnt_amnt" required class="w-full border p-3 rounded" />
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep()" class="bg-gray-400 text-white px-4 py-2 rounded">Back</button>
+          <button type="submit" class="bg-green-700 text-white px-4 py-2 rounded">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
 {% endblock %}
