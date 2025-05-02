@@ -43,3 +43,6 @@ dist/
 temp*/
 *.bak
 *.swp
+
+notebooks/data_exploration*.ipynb
+notebooks/loan*.ipynb
