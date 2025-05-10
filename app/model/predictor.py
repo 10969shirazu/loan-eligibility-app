@@ -21,3 +21,21 @@ def predict_eligibility(processed_input):
 
     prediction = model.predict(processed_input)
     return bool(prediction[0])
+def get_refusal_reason(input_df):
+    row = input_df.iloc[0]
+
+    try:
+        if float(row['dti']) > 35:
+            return "Your debt-to-income ratio exceeds 35%."
+        if float(row['annual_inc']) < 20000:
+            return "Your annual income is below the minimum threshold."
+        if int(row['delinq_2yrs']) > 0:
+            return "Your credit history shows recent delinquencies."
+        if int(row['inq_last_6mths']) > 5:
+            return "You have too many recent credit inquiries."
+        if float(row['revol_util']) > 80:
+            return "Your credit utilization is too high."
+    except Exception as e:
+        return f"Refusal explanation error: {str(e)}"
+
+    return "Your profile does not meet the current eligibility criteria."
