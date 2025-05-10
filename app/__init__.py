@@ -19,8 +19,8 @@ def create_app():
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 587
     app.config['MAIL_USE_TLS'] = True
-    app.config['MAIL_USERNAME'] = 'marcolyzephir15@gmail.com'      
-    app.config['MAIL_PASSWORD'] = 'erdeuqoaoeqmagra'     
+    app.config['MAIL_USERNAME'] = ''      
+    app.config['MAIL_PASSWORD'] = ''     
     mail.init_app(app)
     
     #Limiter l'envoi des mails pour éviter les spams
