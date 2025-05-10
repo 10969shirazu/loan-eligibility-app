@@ -1,7 +1,7 @@
 # Loan Eligibility App
 
 Une application web permettant d'évaluer l’éligibilité d’un utilisateur à un prêt bancaire en fonction de son profil. L’application fournit une prédiction instantanée, une justification en cas de refus, et une interface d’administration avec historique des demandes.
-
+Contributeurs : Marcoly ANTOINE - Dahoumane Sheraz - Fezoui Yacine 
 ---
 
 ## 🚀 Fonctionnalités
