@@ -1,0 +1,48 @@
+# Environnement virtuel
+venv/
+.env
+
+# Cache Python
+__pycache__/
+*.py[cod]
+
+# Fichiers Jupyter inutiles
+.ipynb_checkpoints/
+
+# Données et sorties
+*.csv
+*.xlsx
+*.json
+*.log
+*.tmp
+*.db
+
+# Modèles sauvegardés
+models/*.pkl
+models/*.joblib
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Cache Flask / Python
+instance/
+*.sqlite3
+
+# PyCharm / VSCode / IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Dossier de déploiement ou build
+build/
+dist/
+*.egg-info/
+
+# Autres fichiers non suivis
+temp*/
+*.bak
+*.swp
+
+notebooks/data_exploration*.ipynb
+notebooks/loan*.ipynb

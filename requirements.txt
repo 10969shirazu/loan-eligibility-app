@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+Flask-Mail
+Flask-Limiter
+pandas
+numpy
+scikit-learn
+joblib
+xlsxwriter
+jinja2
